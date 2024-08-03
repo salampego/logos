@@ -8,8 +8,8 @@ export default defineConfig({
   plugins: [
     react(),
     svg({
-      root: "src/assets/svg/svgSprite.svg",
-      output: "public",
+      root: path.resolve(__dirname, "src/assets/svg"),
+      output: path.resolve(__dirname, "public"),
     }),
   ],
   resolve: {
