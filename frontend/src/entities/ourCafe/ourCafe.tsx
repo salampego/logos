@@ -2,7 +2,7 @@ import { Icon } from "shared/IconSvg/iconSvg";
 
 export const OurCafe = () => {
   return (
-    <section className="container bg-cover bg-center bg-norepeat bg-ourCafePattern py-20 flex items-center justify-around sm:hidden">
+    <section className="container bg-cover bg-center bg-norepeat bg-ourCafePattern py-20 mb-20 flex items-center justify-around sm:hidden">
       <div className="max-w-md">
         <h3 className="font-GilroySemibold text-3xl mb-6">OUR CAFE</h3>
         <p className="font-GilroyRegular text-xl ">

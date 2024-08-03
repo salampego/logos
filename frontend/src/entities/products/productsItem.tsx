@@ -44,7 +44,6 @@ export const ProductsItem = ({ products, productsId }: IProductsItemProps) => {
           (item) => item.id === id
         );
 
-        console.log(findBasketProducts);
         return (
           <li
             key={id}
@@ -97,7 +96,7 @@ export const ProductsItem = ({ products, productsId }: IProductsItemProps) => {
                   </p>
                   <Button
                     type="button"
-                    classname="p-4 min-h-11 flex justify-center items-center"
+                    classname="p-4 min-h-11 flex justify-center items-center rounded-xl"
                     onClick={() =>
                       dispatch(
                         addProducts({ id, productName, ingredients, price })

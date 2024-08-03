@@ -12,7 +12,7 @@ export const Button = ({ type, classname, children, onClick }: ButtonProps) => {
     <button
       type={type}
       className={clsx(
-        "bg-secondary  rounded-xl hover:opacity-60 transition-opacity",
+        "bg-secondary hover:opacity-60 transition-opacity",
         classname
       )}
       onClick={onClick}

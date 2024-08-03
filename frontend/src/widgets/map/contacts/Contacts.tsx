@@ -27,7 +27,7 @@ export const Contacts = () => {
           </div>
         </div>
         <div className="flex pt-3 ">
-          <Button type="button" classname="py-4 px-6 mr-5 sm:px-3">
+          <Button type="button" classname="py-4 px-6 mr-5 sm:px-3 rounded-xl">
             <p className="font-ProximaBold text-sm">RESERVE A TABLE</p>
           </Button>
           <div>

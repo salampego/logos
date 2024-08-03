@@ -9,7 +9,6 @@ export const SearchBar = () => {
   };
 
   const onClick = () => {
-    console.log(address);
     setAddress("");
   };
 

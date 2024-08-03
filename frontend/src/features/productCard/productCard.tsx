@@ -7,11 +7,19 @@ import { IProductCardProps } from "features/productCard/model/types/types";
 import { Icon } from "shared/IconSvg/iconSvg";
 import { Button } from "shared/button/button";
 import { useAppDispatch } from "shared/lib/store/redux";
-import { addProducts } from "features/basket/module/basketSlice/basketSlice";
+import {
+  addProducts,
+  decrementProducts,
+} from "features/basket/module/basketSlice/basketSlice";
+import { useSelector } from "react-redux";
+import { getBasketProducts } from "features/basket/module/selectors";
 
 export const ProductCard = ({ id }: IProductCardProps) => {
   const [product, setProduct] = useState<product | null>(null);
   const dispatch = useAppDispatch();
+
+  const basketProducts = useSelector(getBasketProducts);
+  const findBasketProducts = basketProducts.find((item) => item.id === id);
 
   const location = useLocation();
   const { data } = useGetProductsQuery();
@@ -67,21 +75,49 @@ export const ProductCard = ({ id }: IProductCardProps) => {
               <p className="font-GilroyRegular text-sm mb-5">
                 Weight : {weight}
               </p>
-              <div className="flex items-center lg:mb-5">
-                <Button
-                  type="button"
-                  classname="py-2 px-4 flex items-center mr-3"
-                  onClick={() =>
-                    dispatch(
-                      addProducts({ id, productName, ingredients, price })
-                    )
-                  }
-                >
-                  <p>Basket</p>
-                  <span className=" w-px h-8 bg-text opacity-30  mx-3"></span>
-                  <Icon name="shopping-bag" className="w-5 h-5" />
-                </Button>
-                <p className="font-GilroySemibold text-2xl">{price} $</p>
+              <div className="flex items-center lg:mb-5 lg:flex-col">
+                {findBasketProducts && findBasketProducts?.quantity >= 0 ? (
+                  <div className="flex justify-between items-center ">
+                    <Button
+                      type="button"
+                      classname="p-4 rounded-lg w-16"
+                      onClick={() => dispatch(decrementProducts({ id, price }))}
+                    >
+                      <Icon name="minus" className="w-4 h-4" />
+                    </Button>
+                    <p className="font-GilroySemibold text-xl px-3">
+                      {findBasketProducts?.totalProductPrice}
+                    </p>
+                    <Button
+                      type="button"
+                      classname="p-4 rounded-lg w-16"
+                      onClick={() =>
+                        dispatch(
+                          addProducts({ id, productName, ingredients, price })
+                        )
+                      }
+                    >
+                      <Icon name="plus" className="w-4 h-4" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex items-center">
+                    <Button
+                      type="button"
+                      classname="py-2 px-4 flex items-center mr-3 rounded-xl"
+                      onClick={() =>
+                        dispatch(
+                          addProducts({ id, productName, ingredients, price })
+                        )
+                      }
+                    >
+                      <p>Basket</p>
+                      <span className=" w-px h-8 bg-text opacity-30  mx-3"></span>
+                      <Icon name="shopping-bag" className="w-5 h-5" />
+                    </Button>
+                    <p className="font-GilroySemibold text-2xl">{price} $</p>
+                  </div>
+                )}
               </div>
             </div>
             <table className="min-w-full text-white ">

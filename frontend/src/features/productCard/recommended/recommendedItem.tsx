@@ -6,11 +6,17 @@ import { Button } from "shared/button/button";
 import { Icon } from "shared/IconSvg/iconSvg";
 import { useEffect } from "react";
 import { useAppDispatch } from "shared/lib/store/redux";
-import { addProducts } from "features/basket/module/basketSlice/basketSlice";
+import {
+  addProducts,
+  decrementProducts,
+} from "features/basket/module/basketSlice/basketSlice";
+import { useSelector } from "react-redux";
+import { getBasketProducts } from "features/basket/module/selectors";
 
 export const RecommendedItem = ({ recommended }: IRecommendedItemProps) => {
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const basketProducts = useSelector(getBasketProducts);
 
   const [ref, internalSlider] = useKeenSlider<HTMLUListElement>({
     mode: "free",
@@ -31,6 +37,9 @@ export const RecommendedItem = ({ recommended }: IRecommendedItemProps) => {
   return (
     <ul className="keen-slider flex my-12 overflow-hidden" ref={ref}>
       {recommended.map(({ id, productName, weight, ingredients, price }) => {
+        const findBasketProducts = basketProducts.find(
+          (item) => item.id === id
+        );
         return (
           <li
             key={id}
@@ -51,21 +60,49 @@ export const RecommendedItem = ({ recommended }: IRecommendedItemProps) => {
               <div className="mt-2 mb-4">
                 <p className="font-GilroyRegular text-xs">{ingredients}</p>
               </div>
-              <div className="flex justify-between items-center">
-                <p className=" text-xl font-GilroySemibold">Price: {price}$</p>
-                <Button
-                  type="button"
-                  classname="p-4 min-h-11 flex justify-center items-center"
-                  onClick={() =>
-                    dispatch(
-                      addProducts({ id, productName, ingredients, price })
-                    )
-                  }
-                >
-                  <p className="mr-3">Basket</p>
-                  <Icon name="basket" className="w-[24px] h-[24px]" />
-                </Button>
-              </div>
+              {findBasketProducts && findBasketProducts?.quantity >= 0 ? (
+                <div className="flex justify-between items-center">
+                  <Button
+                    type="button"
+                    classname="p-4 rounded-lg w-16"
+                    onClick={() => dispatch(decrementProducts({ id, price }))}
+                  >
+                    <Icon name="minus" className="w-4 h-4" />
+                  </Button>
+                  <p className="font-GilroySemibold text-xl">
+                    {findBasketProducts?.totalProductPrice}
+                  </p>
+                  <Button
+                    type="button"
+                    classname="p-4 rounded-lg w-16"
+                    onClick={() =>
+                      dispatch(
+                        addProducts({ id, productName, ingredients, price })
+                      )
+                    }
+                  >
+                    <Icon name="plus" className="w-4 h-4" />
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex justify-between items-center">
+                  <p className=" text-xl font-GilroySemibold">
+                    Price: {price}$
+                  </p>
+                  <Button
+                    type="button"
+                    classname="p-4 min-h-11 flex justify-center items-center rounded-xl"
+                    onClick={() =>
+                      dispatch(
+                        addProducts({ id, productName, ingredients, price })
+                      )
+                    }
+                  >
+                    <p className="mr-3">Basket</p>
+                    <Icon name="basket" className="w-[24px] h-[24px]" />
+                  </Button>
+                </div>
+              )}
             </div>
           </li>
         );

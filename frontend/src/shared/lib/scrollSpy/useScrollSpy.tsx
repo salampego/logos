@@ -22,7 +22,6 @@ export const useScrollspy = (ids: string[], offset: number = 0) => {
 
   useLayoutEffect(() => {
     const listener = throttle(() => {
-      // console.log("Listener called");
       const scroll = window.pageYOffset;
 
       const position = ids
@@ -38,8 +37,6 @@ export const useScrollspy = (ids: string[], offset: number = 0) => {
           return { id, top, bottom };
         })
         .find(({ top, bottom }) => isBetween(scroll, top, bottom));
-
-      // console.log(`Scroll: ${scroll}, Active ID: ${position?.id}`);
 
       setActiveId(position?.id || "");
     }, 100);

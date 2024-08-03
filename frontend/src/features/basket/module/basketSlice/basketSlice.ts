@@ -8,7 +8,7 @@ const initialState: basket = {
 };
 
 const calculateTotalQuantity = (products: productsBasket[]) => {
-  return products.reduce((total, product) => total + product.quantity, 1);
+  return products.reduce((total, product) => total + product.quantity, 0);
 };
 
 const calculateTotalPrice = (products: productsBasket[]) => {

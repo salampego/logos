@@ -43,7 +43,7 @@ export const Header = () => {
           {totalQuantity <= 0 ? (
             <Button
               type="button"
-              classname="px-4 lg:py-1 min-h-[52px] flex lg:flex-col justify-center items-center lg:justify-between shadow-text "
+              classname="px-4 lg:py-1 min-h-[52px] flex lg:flex-col justify-center items-center lg:justify-between shadow-text rounded-xl"
               onClick={openModal}
             >
               <>
