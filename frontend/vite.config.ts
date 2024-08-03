@@ -4,6 +4,7 @@ import svg from "@neodx/svg/vite";
 import path from "path";
 
 export default defineConfig({
+  base: "/logos/",
   plugins: [
     react(),
     svg({
