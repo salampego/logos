@@ -68,7 +68,7 @@ export const AddToOrder = () => {
               className="keen-slider__slide p-5 flex xl:flex-col justify-center items-center sm:border-b sm: border-r-0 last:border-0 border-opacity-10 border-text xl:border-b-0 xl:border-r border-solid"
             >
               <img
-                src="src/assets/images/noImage.jpg"
+                src="noImage.jpg"
                 alt=""
                 className="xl:w-52 sm:w-20    rounded-xl mb-2"
               />

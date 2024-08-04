@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import type { SVGProps } from "react";
+import svg from "assets/svg/svgSprite.svg";
 
 export interface IconProps extends SVGProps<SVGSVGElement> {
   name: string;
@@ -16,7 +17,7 @@ export const Icon = ({ name, className, ...props }: IconProps) => {
       aria-hidden
       {...props}
     >
-      <use href={`src/assets/svg/svgSprite.svg#${name}`}></use>
+      <use href={`${svg}#${name}`}></use>
     </svg>
   );
 };

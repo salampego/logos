@@ -8,10 +8,13 @@ export default defineConfig({
   plugins: [
     react(),
     svg({
-      root: path.resolve(__dirname, "src/assets/svg"),
-      output: path.resolve(__dirname, "public"),
+      root: "src/assets/svg",
+      output: "public",
     }),
   ],
+  define: {
+    "process.env.BASE_URL": JSON.stringify("/logos/"),
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

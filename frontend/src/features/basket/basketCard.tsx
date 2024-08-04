@@ -46,7 +46,7 @@ export const BasketCard = () => {
                 >
                   <div className="flex items-center xl:basis-2/6">
                     <img
-                      src="src/assets/images/noImage.jpg"
+                      src="noImage.jpg"
                       alt={productName}
                       className="w-32 h-full"
                     />

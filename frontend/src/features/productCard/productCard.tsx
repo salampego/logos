@@ -59,10 +59,7 @@ export const ProductCard = ({ id }: IProductCardProps) => {
           Go back
         </Link>
         <div className="flex mt-5 rounded-lg bg-searchColor  lg:flex-col lg:items-center">
-          <img
-            src="src/assets/images/noImage.jpg"
-            className="w-[600px]  lg:w-full"
-          />
+          <img src="noImage.jpg" className="w-[600px]  lg:w-full" />
 
           <div className="p-5 lg:py-2 lg:px-1 bg-searchColor flex flex-col justify-between lg:justify-center lg:items-center">
             <div className="mb-20 lg:flex lg:flex-col lg:items-center">

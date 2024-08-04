@@ -51,7 +51,7 @@ export const ProductsItem = ({ products, productsId }: IProductsItemProps) => {
           >
             <Link to={`/${id}`} state={{ from: location?.state?.from ?? "/" }}>
               <img
-                src="src/assets/images/noImage.jpg"
+                src="noImage.jpg"
                 className="w-full h-auto"
                 alt={productName}
               />
