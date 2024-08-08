@@ -51,30 +51,32 @@ export const ProductsType = () => {
     },
   });
   return (
-    <nav className="container bg-primary border-solid border-b-2 border-b-text border-opacity-5 sticky tl:top-0 lg:top-[93px] z-40 overflow-hidden ">
-      <ul ref={ref} className="keen-slider">
-        {productsType.map(({ id, productType }) => {
-          return (
-            <HashLink
-              to={`/#${id.toString()}`}
-              className="keen-slider__slide flex justify-center"
-              key={id}
-            >
-              <li
-                className={clsx(
-                  "py-5 relative",
-                  id.toString() === activeId &&
-                    "after:content-[''] after:w-[100%] after:h-1 after:bg-secondary after:absolute after:rounded-lg after:bottom-0"
-                )}
+    <section className="container bg-primary border-solid border-b-2 border-b-text border-opacity-5 sticky tl:top-0 lg:top-[93px] z-40 overflow-hidden ">
+      <nav>
+        <ul ref={ref} className="keen-slider">
+          {productsType.map(({ id, productType }) => {
+            return (
+              <HashLink
+                to={`/#${id.toString()}`}
+                className="keen-slider__slide flex justify-center"
+                key={id}
               >
-                <p className=" font-GilroyRegular flex justify-center ">
-                  {productType}
-                </p>
-              </li>
-            </HashLink>
-          );
-        })}
-      </ul>
-    </nav>
+                <li
+                  className={clsx(
+                    "py-5 relative",
+                    id.toString() === activeId &&
+                      "after:content-[''] after:w-[100%] after:h-1 after:bg-secondary after:absolute after:rounded-lg after:bottom-0"
+                  )}
+                >
+                  <p className=" font-GilroyRegular flex justify-center ">
+                    {productType}
+                  </p>
+                </li>
+              </HashLink>
+            );
+          })}
+        </ul>
+      </nav>
+    </section>
   );
 };

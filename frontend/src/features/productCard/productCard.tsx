@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useGetProductsQuery } from "entities/products/module/products/productsOperation";
 
 import { product } from "entities/products/types/types";
@@ -17,7 +17,7 @@ import { getBasketProducts } from "features/basket/module/selectors";
 export const ProductCard = ({ id }: IProductCardProps) => {
   const [product, setProduct] = useState<product | null>(null);
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const basketProducts = useSelector(getBasketProducts);
   const findBasketProducts = basketProducts.find((item) => item.id === id);
 
@@ -35,6 +35,7 @@ export const ProductCard = ({ id }: IProductCardProps) => {
   }, [data, id]);
 
   if (!product) {
+    navigate("/");
     return null;
   }
 

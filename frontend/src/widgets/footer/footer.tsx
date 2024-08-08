@@ -2,7 +2,7 @@ import { Icon } from "shared/IconSvg/iconSvg";
 
 export const Footer = () => {
   return (
-    <footer className="container py-6 flex items-center justify-around sm:justify-center">
+    <footer className="container py-6 flex items-center justify-around sm:justify-center border-solid border-t-2 border-opacity-5 border-text">
       <div className="flex-col ">
         <Icon name="logo" className="h-6 min-w-24" />
         <div className="mt-3 flex flex-col  justify-center sm:items-center">
