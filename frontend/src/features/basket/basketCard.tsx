@@ -91,7 +91,7 @@ export const BasketCard = () => {
 
                         <div className="flex items-center ">
                           <p className="font-GilroySemibold text-xs text-right totalProductPrice pl-2">
-                            {totalProductPrice} ₽
+                            {totalProductPrice} $
                           </p>
                           <Button
                             type="button"
